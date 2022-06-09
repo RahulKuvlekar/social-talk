@@ -1,38 +1,141 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color-light: #e6e6ff;
+  --primary-color: #ff56a2;
+  --primary-hover: #fc74b1;
+  --bg--gray-900: #28282d;
+  --bg--gray-800: #2b2b31;
+  --grey-color-light: #b3b2b2;
+  --grey-color-medium: #585858;
+  --grey-color-dark: #3d3d3d;
+  --primary-color-dark: #ff56a21b;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.3;
+  font-family: "Outfit", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+ul {
+  list-style: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+hr {
+  border: 1px solid #d9d9d9;
+}
+body {
+  overflow: hidden;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--grey-color-dark);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar,
+.main-section::-webkit-scrollbar,
+.category-section::-webkit-scrollbar,
+.login::-webkit-scrollbar,
+.signup::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body,
+.main-section,
+.category-section,
+.login,
+.signup {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+button,
+a {
+  cursor: pointer;
+  display: inline-flex;
+  flex-flow: row;
   align-items: center;
+}
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
+  accent-color: var(--primary-color);
+}
+.page-title {
+  width: 100%;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+}
+.page-title-center {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.page-title-start {
+  justify-content: start;
+}
+.page-title-space-btw {
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.App {
+  display: grid;
+  grid-template-rows: 10vh 90vh;
+}
+.main-section {
+  color: var(--primary-color);
+  background-color: var(--bg--gray-800);
+  max-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.mainpage-section {
+  padding: 1.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.not-available {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--primary-color);
+}
+.not-available h1 {
+  color: var(--primary-color);
+}
+.not-available .btn-outline-primary {
+  background-color: transparent;
+}
+.not-available .btn-outline-primary:hover {
+  border: 1px solid var(--primary-hover);
+  color: var(--primary-hover);
+}
+.position-relative {
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
+}
+
+.app-name:hover {
+  color: var(--primary-hover);
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+.no-visibility {
+  opacity: 0.1;
 }
