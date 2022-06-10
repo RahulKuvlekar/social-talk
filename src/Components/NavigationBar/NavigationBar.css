@@ -1,0 +1,224 @@
+.nav-bar {
+  width: 100%;
+  min-height: 10vh;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+}
+.nav-bar-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  max-width: 1440px;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+}
+
+/* Nav Sections  */
+.nav-section {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+.nav-section:first-child {
+  justify-content: flex-start;
+}
+
+/* Nav Logo/Title */
+.nav-logo {
+  width: 60px;
+  height: 60px;
+  margin: 0 0.5rem;
+}
+.nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.nav-logo-title * {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin: 0 1rem;
+}
+
+/* Hamburger Menu */
+.burger-menu {
+  display: none;
+  cursor: pointer;
+}
+.burger-menu div {
+  width: 35px;
+  height: 4px;
+  margin: 6px;
+  background-color: var(--grey-color-dark);
+}
+
+/* Nav Links/Buttons */
+.nav-pill {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.nav-bar .nav-pill {
+  list-style: none;
+}
+.nav-bar .list-inline-item {
+  display: inline-block;
+}
+.nav-bar .list-inline-item:hover a,
+.nav-bar .list-inline-item:hover button {
+  color: var(--primary-hover);
+}
+.nav-bar .link-no-style,
+.nav-bar .nav-icon-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+.nav-pill .link-no-style {
+  font-weight: 600;
+  padding: 1rem;
+  color: var(--grey-color-dark);
+}
+
+.nav-pill.nav-btn-icons {
+  margin: 0 1rem;
+}
+.nav-bar .nav-icon-btn {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  margin: auto;
+  font-weight: 600;
+  color: var(--grey-color-dark);
+}
+.nav-bar .nav-icon-btn .nav-icon i {
+  font-size: 1.3rem;
+}
+.nav-bar .nav-icon-btn .nav-icon-text {
+  font-size: 0.5rem;
+}
+
+/* Nav - Search Bar */
+.search-bar {
+  flex-grow: 1;
+  padding: 0.2rem 1rem;
+  border-radius: 0.4rem;
+  background-color: #f5f5f6;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  margin: 0 0.5rem;
+}
+.search-bar i {
+  color: var(--grey-color-medium);
+}
+.search-bar input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: #f5f5f6;
+  color: var(--grey-color-medium);
+  font-size: 1rem;
+}
+
+/* For Tablet View */
+@media all and (max-width: 786px) {
+  .burger-menu {
+    display: inline-block;
+  }
+
+  .nav-bar .list-inline-item .nav-icon-text {
+    display: none;
+  }
+
+  .nav-pill.nav-btn-icons {
+    margin: 0 0.5rem;
+  }
+
+  .nav-pill.nav-menu {
+    position: absolute;
+    left: -100%;
+    top: 10vh;
+    width: 100%;
+    flex-flow: column;
+    text-align: center;
+    transition: left 0.3s ease-in;
+    background-color: white;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  }
+
+  .nav-pill.nav-menu .list-inline-item {
+    border-top: 1px solid rgb(228, 228, 228);
+    margin: 0 3rem;
+  }
+
+  .nav-menu.nav-active {
+    left: 0;
+  }
+}
+
+@media all and (max-width: 540px) {
+  .search-bar {
+    margin: 0 1rem 0 0;
+  }
+
+  .nav-logo-title * {
+    font-size: 1.2rem;
+  }
+
+  .nav-bar .list-inline-item .nav-icon-text {
+    display: inline-block;
+  }
+
+  .nav-bar .nav-icon-btn .nav-icon i {
+    display: none;
+  }
+
+  .nav-pill.nav-menu {
+    box-shadow: none;
+  }
+
+  .nav-pill.nav-btn-icons {
+    position: absolute;
+    left: -100%;
+    top: calc(10vh + 152px);
+    width: 100%;
+    flex-flow: column;
+    text-align: center;
+    transition: left 0.3s ease-in;
+    background-color: white;
+    margin: 0 0;
+  }
+
+  .nav-bar .nav-icon-btn {
+    flex-flow: row wrap;
+    font-weight: 600;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-pill.nav-btn-icons .list-inline-item {
+    border-top: 1px solid rgb(228, 228, 228);
+    margin: 0 3rem;
+  }
+
+  .nav-btn-icons.nav-active {
+    left: 0;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  }
+}
