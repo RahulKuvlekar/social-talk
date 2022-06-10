@@ -1,9 +1,62 @@
 import "./App.css";
+import { Routes, Route, useLocation } from "react-router-dom";
+import NavigationBar from "./Components/NavigationBar/NavigationBar";
+import Home from "./Pages/Home/Home";
+import Login from "./Pages/Authentication/Login";
+import Signup from "./Pages/Authentication/Signup";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./Config/init-firebase";
+import {
+  REMOVE_USER,
+  SET_USER,
+} from "./Pages/Authentication/AuthenticationSlice";
+import Toast from "./Components/UI/Toast/Toast";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 function App() {
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(SET_USER(JSON.stringify(user)));
+      } else {
+        dispatch(REMOVE_USER(null));
+      }
+    });
+
+    return () => unsubscribe();
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="App">
-      <h1>Social Talk App</h1>
+      <Toast position={"top-left"} autoDeleteInterval={3000} />
+      {!(pathname === "/login" || pathname === "/signup") && <NavigationBar />}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
     </div>
   );
 }
