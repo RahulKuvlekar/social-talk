@@ -1,0 +1,12 @@
+.smallLoader .sm {
+  width: 1rem;
+}
+.smallLoader .md {
+  width: 2rem;
+}
+.smallLoader .lg {
+  width: 3rem;
+}
+.smallLoader .xlg {
+  width: 4rem;
+}
