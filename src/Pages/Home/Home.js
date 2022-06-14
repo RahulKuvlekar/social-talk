@@ -1,10 +1,10 @@
-import React from "react";
+import PostListing from "../../Components/PostListing/PostListing";
 import "./Home.css";
 
 const Home = () => {
   return (
-    <div>
-      <h1 className="text-align-center">Home Page</h1>
+    <div className="main-section home-section">
+      <PostListing />
     </div>
   );
 };

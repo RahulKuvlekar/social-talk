@@ -1,13 +1,19 @@
-import React from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaUser, FaBell, FaHome, FaPlusCircle } from "react-icons/fa";
 import "./NavigationBar.css";
 import { useDispatch } from "react-redux";
 import { signOutSocialTalks } from "../../Pages/Authentication/AuthenticationSlice";
+import Modal from "../UI/Modal/Modal";
+import MakePost from "../MakePost/MakePost";
 
 const NavigationBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isPostModalOpen, setPostModal] = useState(false);
+
+  const openModal = () => setPostModal(true);
+  const closeModal = () => setPostModal(false);
 
   return (
     <header className="nav-bar">
@@ -47,49 +53,29 @@ const NavigationBar = () => {
 
           <ul className="nav-pill nav-btn-icons">
             <li className="list-inline-item">
-              <NavLink
-                to="/#"
-                className={({ isActive }) =>
-                  isActive ? "nav-active nav-icon-btn" : "nav-icon-btn"
-                }
-              >
+              <button className="nav-icon-btn" onClick={openModal}>
                 <span className="nav-icon">
                   <FaPlusCircle />
                 </span>
-                <span className="nav-icon-text"> Post </span>
-              </NavLink>
+                {/* <span className="nav-icon-text"> Post </span> */}
+              </button>
             </li>
             <li className="list-inline-item">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? "nav-active nav-icon-btn" : "nav-icon-btn"
+                  isActive ? "nav-icon-btn nav-active" : "nav-icon-btn"
                 }
               >
                 <span className="nav-icon">
                   <FaHome />
                 </span>
-                <span className="nav-icon-text"> Home </span>
+                {/* <span className="nav-icon-text"> Home </span> */}
               </NavLink>
             </li>
             <li className="list-inline-item">
-              <NavLink
-                to="/#"
-                className={({ isActive }) =>
-                  isActive ? "nav-active nav-icon-btn" : "nav-icon-btn"
-                }
-              >
-                <span className="nav-icon">
-                  <FaBell />
-                </span>
-                <span className="nav-icon-text"> Notification </span>
-              </NavLink>
-            </li>
-            <li className="list-inline-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-active nav-icon-btn" : "nav-icon-btn"
-                }
+              <button
+                className="nav-icon-btn"
                 to="/login"
                 onClick={() => {
                   dispatch(signOutSocialTalks());
@@ -98,12 +84,15 @@ const NavigationBar = () => {
                 <span className="nav-icon">
                   <FaUser />
                 </span>
-                <span className="nav-icon-text"> Profile </span>
-              </NavLink>
+                {/* <span className="nav-icon-text"> Profile </span> */}
+              </button>
             </li>
           </ul>
         </div>
       </nav>
+      <Modal isOpen={isPostModalOpen} onClose={closeModal}>
+        <MakePost onClose={closeModal} />
+      </Modal>
     </header>
   );
 };

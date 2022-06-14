@@ -1,0 +1,48 @@
+.post-modal .modal-body {
+  display: flex;
+  flex-flow: row;
+  gap: 1rem;
+}
+.post-modal .post-description {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+}
+.post-modal .post-description textarea {
+  font-size: 1.4rem;
+  background: #fff;
+  padding: 0.6rem 0.7rem;
+  outline: none;
+  margin: 0.25rem 0;
+  width: 100%;
+  border-radius: 0.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--grey-color-dark);
+  border: 1px solid var(--grey-color-light);
+}
+.post-modal .post-description textarea:focus {
+  outline: 2px solid var(--primary-color);
+  border: 1px solid transparent;
+}
+.post-modal .post-description textarea.error {
+  outline: 2px solid var(--danger-color);
+  border: 1px solid transparent;
+}
+.post-modal .post-description .error-message {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--danger-color);
+  margin: 0 0 0.5rem;
+}
+
+.post-modal .post-btns {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.post-modal .post-btns .btn-disabled {
+  background-color: var(--primary-hover);
+  box-shadow: none;
+}

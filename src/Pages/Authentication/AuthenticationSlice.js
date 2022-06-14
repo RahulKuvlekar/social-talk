@@ -26,10 +26,10 @@ export const updateSocialTalkUser = createAsyncThunk(
   async (data, thunkAPI) => {
     const {
       currentUser,
-      updateData: { displayName, photoURL, phoneNumber },
+      updateData: { displayName, photoURL },
     } = data;
 
-    await updateProfile(currentUser, { displayName, photoURL, phoneNumber });
+    await updateProfile(currentUser, { displayName, photoURL });
   }
 );
 
@@ -48,7 +48,6 @@ export const createSocialTalkUser = createAsyncThunk(
           updateData: {
             displayName: `${firstName} ${lastName}`,
             photoURL: "",
-            phoneNumber: "",
           },
         })
       );
