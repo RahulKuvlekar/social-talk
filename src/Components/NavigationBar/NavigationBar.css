@@ -104,8 +104,9 @@
   font-weight: 600;
   color: var(--grey-color-dark);
 }
-.nav-bar .nav-icon-btn .nav-icon i {
-  font-size: 1.3rem;
+.nav-bar .nav-icon-btn .nav-icon i,
+.nav-bar .nav-icon-btn .nav-icon svg {
+  font-size: 1.6rem;
 }
 .nav-bar .nav-icon-btn .nav-icon-text {
   font-size: 0.5rem;
@@ -221,4 +222,8 @@
     left: 0;
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   }
+}
+.nav-active i,
+.nav-active svg {
+  color: var(--primary-color);
 }
