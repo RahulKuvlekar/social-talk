@@ -93,8 +93,7 @@ input[type="range"] {
   grid-template-rows: 10vh 90vh;
 }
 .main-section {
-  color: var(--primary-color);
-  background-color: var(--bg--gray-800);
+  background-color: white;
   max-height: 90vh;
   overflow-x: hidden;
   overflow-y: auto;
