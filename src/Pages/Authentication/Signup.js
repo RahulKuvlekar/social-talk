@@ -121,7 +121,6 @@ const Signup = () => {
           src="/Images/signupPoster.svg"
           alt="poster"
           onLoad={() => {
-            console.log("OnLoad");
             setImgLoader(false);
           }}
         />

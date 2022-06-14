@@ -75,8 +75,8 @@ const Login = () => {
   const setDummyCredentials = () => {
     resetHandler();
     setFormValue({
-      email: "rahulkuvlekar007@gmail.com",
-      password: "kuvlekar",
+      email: "guestuser@urservice.always",
+      password: "0987654321",
     });
   };
 
