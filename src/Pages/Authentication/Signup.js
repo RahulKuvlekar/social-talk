@@ -9,6 +9,7 @@ import { CLEAR_ERROR, getAuthData } from "./AuthenticationSlice";
 import { createSocialTalkUser } from "./AuthenticationSlice";
 import { ADD_TOAST } from "../../Components/UI/Toast/ToastSlice";
 import { INFO } from "../../Constant/constant";
+import { createProfile } from "../../Components/MyProfile/MyProfileSlice";
 
 const Signup = () => {
   const INITIAL_VAL = {
@@ -95,9 +96,18 @@ const Signup = () => {
 
     dispatch(createSocialTalkUser(data))
       .unwrap()
-      .then(() => {
+      .then((response) => JSON.parse(response))
+      .then((data) => {
         navigate("/login");
         dispatch(ADD_TOAST(INFO, `New Account created successfully 🎉`));
+        dispatch(
+          createProfile({
+            displayName: `${formValue.firstName} ${formValue.lastName}`,
+            email: data.email,
+            photoURL: null,
+            uid: data.uid,
+          })
+        );
       })
       .catch((error) => {});
   };
