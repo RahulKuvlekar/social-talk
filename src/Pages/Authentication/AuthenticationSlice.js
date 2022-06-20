@@ -52,6 +52,8 @@ export const createSocialTalkUser = createAsyncThunk(
         })
       );
     }
+
+    return JSON.stringify(newUser.user);
   }
 );
 export const signInUserSocialTalks = createAsyncThunk(
@@ -67,7 +69,7 @@ const authenticationSlice = createSlice({
   initialState,
   reducers: {
     SET_USER: (state, action) => {
-      state.user = JSON.parse(action.payload);
+      state.user = action.payload;
       state.isAuthenticated = true;
     },
     CLEAR_ERROR: (state, action) => {
