@@ -6,6 +6,7 @@ import "./MakePost.css";
 import { serverTimestamp } from "firebase/firestore";
 import { makePost } from "../PostSlice/PostSlice";
 import { ADD_TOAST } from "../UI/Toast/ToastSlice";
+import Loader from "../UI/Loader/Loader";
 
 const MakePost = ({ onClose }) => {
   const initialValue = {
@@ -15,6 +16,7 @@ const MakePost = ({ onClose }) => {
   const [formValue, setFormValue] = useState(initialValue);
   const [formError, setFormError] = useState({});
   const [formIsSubmit, setformIsSubmit] = useState(false);
+  const [imgLoader, setImgLoader] = useState(true);
   const { user } = useSelector(getAuthData);
   const dispatch = useDispatch();
   const validate = ({ postCaption, postDescription }) => {
@@ -90,9 +92,11 @@ const MakePost = ({ onClose }) => {
       <h1 className="modal-header">Post</h1>
       <div className="modal-body">
         <div className="post-img">
+          {imgLoader && <Loader />}
           <img
             src={user?.photoURL ? user?.photoURL : DEFAULT_AVATAR}
             alt={user?.displayName}
+            onLoad={() => setImgLoader(false)}
           />
         </div>
         <div className="post-description">
