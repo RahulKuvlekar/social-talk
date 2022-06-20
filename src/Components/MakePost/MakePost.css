@@ -46,3 +46,13 @@
   background-color: var(--primary-hover);
   box-shadow: none;
 }
+.post-modal .post-img {
+  position: relative;
+  width: 75px;
+  height: 75px;
+}
+.post-modal .post-img img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

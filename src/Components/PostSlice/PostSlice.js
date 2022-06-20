@@ -1,8 +1,4 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  nanoid,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
 import {
   collection,
   doc,
@@ -65,7 +61,6 @@ export const editPost = createAsyncThunk(
     const { postCaption, postDescription, postId } = data;
     const dataRef = doc(db, LOCALTALKS_POSTS, postId);
     await setDoc(dataRef, { postCaption, postDescription }, { merge: true });
-    JSON.parse(undefined);
     return data;
   }
 );
@@ -130,12 +125,20 @@ export const addComment = createAsyncThunk(
 const PostSlice = createSlice({
   name: "post",
   initialState,
-  reducer: {
+  reducers: {
     SET_POST_LOADER: (state) => {
       state.postLoading = true;
     },
     REMOVE_POST_LOADER: (state) => {
       state.postLoading = false;
+    },
+    GET_MYPOST: (state, action) => {
+      state.myPosts = state.allPosts.filter(
+        (post) => post.userInfo.uid === action.payload
+      );
+    },
+    RESET_MYPOST: (state) => {
+      state.myPosts = [];
     },
   },
   extraReducers: {
@@ -205,7 +208,8 @@ const PostSlice = createSlice({
   },
 });
 
-export const { SET_POST_LOADER, REMOVE_POST_LOADER } = PostSlice.actions;
+export const { SET_POST_LOADER, REMOVE_POST_LOADER, RESET_MYPOST, GET_MYPOST } =
+  PostSlice.actions;
 
 export default PostSlice.reducer;
 

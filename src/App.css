@@ -135,6 +135,26 @@ input[type="range"] {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
 }
+
 .no-visibility {
   opacity: 0.1;
+}
+
+.nav-bar li.list-inline-item {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-sm {
+  width: 25px;
+  height: 25px;
+  outline: 1px solid var(--primary-color);
+  outline-offset: 1px;
+}
+
+.userProfile-link:hover {
+  border-bottom: 1px solid var(--grey-color-medium);
+  margin-bottom: -1px;
 }

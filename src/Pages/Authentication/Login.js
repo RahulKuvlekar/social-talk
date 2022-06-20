@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate, Navigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import SmallLoader from "../../Components/UI/SmallLoader/SmallLoader";
 import "./Auth.css";
 import Loader from "../../Components/UI/Loader/Loader";
@@ -27,10 +27,7 @@ const Login = () => {
     error: loginError,
   } = useSelector(getAuthData);
   const dispatch = useDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
-
-  const FROM = location?.state?.from?.pathname || "/";
 
   const inputHandler = (event) => {
     const { name, value } = event.target;
@@ -86,7 +83,7 @@ const Login = () => {
     dispatch(signInUserSocialTalks(data))
       .unwrap()
       .then(() => {
-        navigate(FROM);
+        navigate("/");
         dispatch(ADD_TOAST(SUCCESS, `You are been login successfully 🎉`));
       })
       .catch((error) => {});
@@ -102,7 +99,7 @@ const Login = () => {
     // eslint-disable-next-line
   }, [isSubmit]);
 
-  if (isAuthenticated) return <Navigate to={FROM} replace />;
+  if (isAuthenticated) return <Navigate to={"/"} replace />;
   return (
     <div className="authentication-section">
       <div className="login">

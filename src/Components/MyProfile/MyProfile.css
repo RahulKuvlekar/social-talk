@@ -1,0 +1,124 @@
+.UserProfile-section {
+  width: 500px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  margin: 2rem auto;
+  padding: 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+.UserProfile-profilePic {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.UserProfile-profilePic img {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.UserProfile-profilePic img.display-none {
+  display: none;
+}
+.UserProfile-profilePic img.display-block {
+  display: block;
+}
+.UserProfile-profilePic .loader-wrapper {
+  width: 125px;
+  height: 125px;
+  position: relative;
+}
+.UserProfile-profilePic .loader-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+.UserProfile-description {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+}
+
+.UserProfile-row {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.UserProfile-header {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  /* margin-bottom: 0.5rem; */
+}
+
+.UserProfile-header button:nth-child(2) {
+  margin: auto;
+}
+.UserProfile-username {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.UserProfile-btn {
+  min-width: 125px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--primary-color);
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease-in-out;
+}
+.UserProfile-btn:hover {
+  background-color: var(--primary-hover);
+}
+.UserProfile-btn-signout {
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: var(--grey-color-medium);
+  transition: color 0.3s ease-in-out;
+}
+.UserProfile-btn-signout:hover {
+  color: var(--grey-color-dark);
+}
+
+.UserProfile-counts {
+  color: var(--grey-color-medium);
+  font-weight: 400;
+}
+.UserProfile-counts span {
+  color: var(--grey-color-medium);
+  font-weight: 600;
+}
+
+.UserProfile-displayName {
+  color: var(--grey-color-medium);
+  margin-bottom: 0.25rem;
+}
+
+.UserProfile-bio {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--grey-color-medium);
+  margin-bottom: 0.25rem;
+}
+.UserProfile-website {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #2b6cb0;
+}
+.UserProfile-website:hover {
+  border-bottom: 1.5px solid #2b6cb0;
+  margin-bottom: -1.5px;
+}

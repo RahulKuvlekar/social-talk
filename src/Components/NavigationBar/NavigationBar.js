@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { FaUser, FaBell, FaHome, FaPlusCircle } from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
+import { FaHome, FaPlusCircle } from "react-icons/fa";
 import "./NavigationBar.css";
-import { useDispatch } from "react-redux";
-import { signOutSocialTalks } from "../../Pages/Authentication/AuthenticationSlice";
+import { useSelector } from "react-redux";
 import Modal from "../UI/Modal/Modal";
 import MakePost from "../MakePost/MakePost";
+import { DEFAULT_AVATAR } from "../../Constant/constant";
+import { getAuthData } from "../../Pages/Authentication/AuthenticationSlice";
 
 const NavigationBar = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { user } = useSelector(getAuthData);
   const [isPostModalOpen, setPostModal] = useState(false);
-
   const openModal = () => setPostModal(true);
   const closeModal = () => setPostModal(false);
 
@@ -32,7 +31,7 @@ const NavigationBar = () => {
           </div>  */}
 
           <div className="nav-logo-title">
-            <NavLink className="link-no-style" to="#">
+            <NavLink className="link-no-style" to="/">
               Social Talks
             </NavLink>
           </div>
@@ -74,18 +73,13 @@ const NavigationBar = () => {
               </NavLink>
             </li>
             <li className="list-inline-item">
-              <button
-                className="nav-icon-btn"
-                to="/login"
-                onClick={() => {
-                  dispatch(signOutSocialTalks());
-                }}
-              >
-                <span className="nav-icon">
-                  <FaUser />
-                </span>
-                {/* <span className="nav-icon-text"> Profile </span> */}
-              </button>
+              <Link to={`/profile/${user?.uid}`}>
+                <img
+                  src={user?.photoURL ? user?.photoURL : DEFAULT_AVATAR}
+                  alt="user"
+                  className="avatar avatar-sm"
+                />
+              </Link>
             </li>
           </ul>
         </div>

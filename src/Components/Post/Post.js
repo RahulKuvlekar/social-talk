@@ -24,6 +24,8 @@ import {
 import moment from "moment";
 import "./Post.css";
 import { ADD_TOAST } from "../UI/Toast/ToastSlice";
+import { Link } from "react-router-dom";
+import { getProfileURL } from "../../Utils/post";
 
 const Post = ({ data }) => {
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -102,7 +104,10 @@ const Post = ({ data }) => {
     const data = {
       postId: id,
     };
-    dispatch(deletePost(data));
+    dispatch(deletePost(data))
+      .unwrap()
+      .then(() => closeDeleteModal())
+      .catch((error) => dispatch(ADD_TOAST, error.message));
   };
 
   const openEditModal = () => setEditModalOpen(true);
@@ -111,20 +116,27 @@ const Post = ({ data }) => {
   const closeDeleteModal = () => setDeleteModalOpen(false);
   const commentHandler = (e) => setCommentInput(e.target.value);
 
-  console.log(data);
-
   return (
     <div className="post-section">
       <div className="post-header">
-        <img
-          src={
-            data?.userInfo?.photoURL ? data?.userInfo?.photoURL : DEFAULT_AVATAR
-          }
-          alt={data?.userInfo?.displayName}
-        />
+        <Link to={getProfileURL(userInfo?.uid)}>
+          <img
+            src={
+              data?.userInfo?.photoURL
+                ? data?.userInfo?.photoURL
+                : DEFAULT_AVATAR
+            }
+            alt={data?.userInfo?.displayName}
+          />
+        </Link>
         <div className="post-header-info">
           <div>
-            <h5 className="text-grey-md">{data?.userInfo?.displayName}</h5>
+            <Link
+              to={getProfileURL(userInfo?.uid)}
+              className="text-grey-md userProfile-link"
+            >
+              {data?.userInfo?.displayName}
+            </Link>
             <h5 className="text-grey-lt">{data?.userInfo?.email}</h5>
             <h6 className="text-grey-lt">
               {moment(data?.userInfo?.date?.seconds * 1000).format(
@@ -178,7 +190,12 @@ const Post = ({ data }) => {
           )}
         </span>
         <div className="post-caption">
-          <span className="post-username">{userInfo?.displayName}</span>
+          <Link
+            to={getProfileURL(userInfo?.uid)}
+            className="post-username userProfile-link"
+          >
+            {userInfo?.displayName}
+          </Link>
           {postCaption}
         </div>
         <div className="post-comment-section">
