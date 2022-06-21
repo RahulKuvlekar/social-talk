@@ -7,6 +7,7 @@ import Modal from "../UI/Modal/Modal";
 import MakePost from "../MakePost/MakePost";
 import { DEFAULT_AVATAR } from "../../Constant/constant";
 import { getAuthData } from "../../Pages/Authentication/AuthenticationSlice";
+import SearchBar from "../Searchbar/SearchBar";
 
 const NavigationBar = () => {
   const { user } = useSelector(getAuthData);
@@ -38,17 +39,7 @@ const NavigationBar = () => {
         </div>
 
         <div className="nav-section">
-          <label className="search-bar">
-            <span className="search-bar-btn" type="submit">
-              <i className="fa fa-search"> </i>
-            </span>
-            <input
-              className="search-bar-input"
-              type="text"
-              placeholder="Type to search"
-              name="search"
-            />
-          </label>
+          <SearchBar />
 
           <ul className="nav-pill nav-btn-icons">
             <li className="list-inline-item">
