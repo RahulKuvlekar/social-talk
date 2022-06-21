@@ -1,0 +1,26 @@
+.profile-tag {
+  display: flex;
+  flex-flow: row;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+.profile-tag-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile-tag-username {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+}
+.profile-tag-displayName {
+  font-size: 1rem;
+  color: var(--grey-color-medium);
+}
+.profile-tag-name {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--grey-color-medium);
+}
