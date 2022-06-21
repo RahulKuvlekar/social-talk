@@ -19,6 +19,7 @@ import Profile from "./Pages/Profile/Profile";
 import { ADD_TOAST } from "./Components/UI/Toast/ToastSlice";
 import { DANGER, LOCALTALKS_USERS } from "./Constant/constant";
 import { getAllPost } from "./Components/PostSlice/PostSlice";
+import { getAllUserProfiles } from "./Components/UserSlice/UserSlice";
 
 function App() {
   const { pathname } = useLocation();
@@ -42,6 +43,13 @@ function App() {
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(getAllPost())
+        .unwrap()
+        .then()
+        .catch((error) => {
+          dispatch(ADD_TOAST(DANGER, error.message));
+        });
+
+      dispatch(getAllUserProfiles())
         .unwrap()
         .then()
         .catch((error) => {
