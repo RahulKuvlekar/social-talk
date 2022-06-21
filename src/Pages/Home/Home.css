@@ -1,0 +1,7 @@
+.home-section {
+  max-width: 1980px;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  height: 90vh;
+  overflow: hidden;
+}

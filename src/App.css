@@ -46,7 +46,8 @@ body::-webkit-scrollbar,
 .main-section::-webkit-scrollbar,
 .category-section::-webkit-scrollbar,
 .login::-webkit-scrollbar,
-.signup::-webkit-scrollbar {
+.signup::-webkit-scrollbar,
+.postListing-section::-webkit-scrollbar {
   display: none;
 }
 
@@ -55,7 +56,8 @@ body,
 .main-section,
 .category-section,
 .login,
-.signup {
+.signup,
+.postListing-section {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
