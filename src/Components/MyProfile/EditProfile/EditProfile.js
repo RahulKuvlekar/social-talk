@@ -12,6 +12,7 @@ import { FaPlusSquare } from "react-icons/fa";
 import { getAuthData } from "../../../Pages/Authentication/AuthenticationSlice";
 import { ADD_TOAST } from "../../UI/Toast/ToastSlice";
 import Loader from "../../UI/Loader/Loader";
+import { getAllUserProfiles } from "../../UserSlice/UserSlice";
 
 const EditProfile = ({ onClose }) => {
   const { user } = useSelector(getAuthData);
@@ -67,6 +68,11 @@ const EditProfile = ({ onClose }) => {
       .catch((error) => dispatch(ADD_TOAST(DANGER, error.message)));
 
     onClose();
+
+    dispatch(getAllUserProfiles())
+      .unwrap()
+      .then()
+      .catch((error) => dispatch(ADD_TOAST(DANGER, error.message)));
   };
 
   const imageChangeHandler = (event) =>

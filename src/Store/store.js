@@ -3,6 +3,7 @@ import authenticationReducer from "../Pages/Authentication/AuthenticationSlice";
 import toastReducer from "../Components/UI/Toast/ToastSlice";
 import postReducer from "../Components/PostSlice/PostSlice";
 import myProfileReducer from "../Components/MyProfile/MyProfileSlice";
+import userProfilesReducer from "../Components/UserSlice/UserSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     toast: toastReducer,
     post: postReducer,
     myProfile: myProfileReducer,
+    userProfiles: userProfilesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
