@@ -1,0 +1,14 @@
+.profileListing-section {
+  padding: 1.5rem;
+}
+.profileListing-userprofile {
+  padding: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem 0;
+  border-bottom: 1px solid #b3b2b27d;
+}
+.profileListing-suggestions {
+  display: flex;
+  flex-flow: column;
+  gap: 0.2rem;
+  margin: 0.5rem 0;
+}

@@ -9,7 +9,7 @@ const PostListing = () => {
   const { allPosts, postLoading } = useSelector(getPostData);
 
   return (
-    <div>
+    <div className="postListing-section">
       {postLoading && <Loader />}
       {allPosts?.length > 0 &&
         allPosts.map((data) => (

@@ -1,0 +1,22 @@
+.search-bar {
+  position: relative;
+}
+.search-bar-btn {
+  font-size: 1.2rem;
+  color: var(--grey-color-medium);
+}
+.hide-search-bar-btn {
+  visibility: hidden;
+}
+.search-result {
+  position: absolute;
+  top: 2.8rem;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 0 0 1rem 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
